@@ -27,23 +27,17 @@ export class BookFormComponent {
   }
 
   onSubmit(){
+    console.log(this.bookForm.value);
     if(this.bookForm.valid){
       let book: Book = this.bookForm.value;
       console.log(book);
       let id = Date.now();
       book.id = id.toString();
       console.log('valid')
-
       //dispatch the action
-      this.store.dispatch(AddBook(book))
-
-      
+      this.store.dispatch(AddBook({book}))
     }
     console.log('not valid')
-      
-
-      
-      
   }
 
   ngOnInit():void{
